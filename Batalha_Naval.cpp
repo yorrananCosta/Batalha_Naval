@@ -13,6 +13,115 @@
 
 using namespace std;
 
+void mostrarDerrota()
+{
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+    cout << "MN0OOO000XNMMN0OOOOO0NN0OOO00KXWMMX0OOO000KXWMMMWXOxxxOXWMN0OOOOOOO0XN0OOOO0XMMM" << endl;
+    cout << "Mk'    ...,xNO'     .kk'    ...:0Wx.     ...lKMKl.     .oKx.       .dx.    .oNMM" << endl;
+    cout << "Mk.   ;,   'Ok.   ,coKk.   ;,   cXd   .;c'   oNl   'l.   oOo:.   .:okc      ;KMM" << endl;
+    cout << "Mk.  .xd.  .kk.  .xWWMk.  .do   :Xd   .xKc   lK:   :O;   cNMX:   ;XMK;  ..  .OMM" << endl;
+    cout << "Mk.  .xd.  .kk.   .,lKk.   ..  'kNd    ...  ;OX;   :O;   cNMX:   ;XMO.  ,:   oWM" << endl;
+    cout << "Mk.  .xd.  .kk.   .'cKk.   '.  'kNd   .,;.  ;OX;   :O;   cNMX:   ;XWd.  cd.  :XM" << endl;
+    cout << "Mk.  .xd.  .kk.  .dNWWk.  .xd   :Xd   .kXc   lK:   :O;   cNMX:   ;XNc   ',   '0M" << endl;
+    cout << "Mk.  .lc   .kk.   ckkKx.  .xd.  ;Kd   'kXl   cXc   ,x,   lWMX;   ;XK,    .   .xM" << endl;
+    cout << "Mk.        :Kk.      lx.  .xd.  ;Kd   'kXl   cNO,   .   ;0MMX:   ;Xk.   lO,   cN" << endl;
+    cout << "MXdoooooodkXMXxoooooo0KxoodKKdookNKdooxXW0ooo0WMXklcccokXMMMWOoooOWKdoodKWOoookN" << endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+}
+
+void mostrarVitoria()
+{
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMKo;;ckNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+    cout << "MMWNNNNWMWWNNNWWNNNNWWNNNNNNNNNNWMMWXl.,cxXWMMMWNNNNWWWMMMMWNNNNWMMWWNNNNNWMMMMM" << endl;
+    cout << "MMO;'''oNK:'''lx:'''dO:'''''''';OWOc'.....,l0WNo''''',,:dXM0:'''dNM0:''''':0MMMM" << endl;
+    cout << "MM0'   ,0x.   :d.   cx,.      ..xx.   ''    ,0X;    ..   cNk.   cNWd.     .dWMMM" << endl;
+    cout << "MMX:   .ko    ox.   cXK0l    :0KXc   .kd.   .dX:   .xl   '0k.   cNNc   .   cNMMM" << endl;
+    cout << "MMWo   .l:   .kk.   cNMMd.   lWMNc   .kd.    dX;   .l;   ;Kk.   cNK,  .;.  '0MMM" << endl;
+    cout << "MMMO.   ;,   ,0k.   cNMMd.   lWMN:   .kd..   oK:        ,kWk.   cNk.  .o,  .xMMM" << endl;
+    cout << "MMMK;   ..   cNk.   cNMMd.   lWMNc   .kd..   oK;   .c,  .cXk.   cXd   'd;   lNMM" << endl;
+    cout << "MMMWl        dWk.   cNMMd.   lWMNc   .kd..   dX;   .Oo   '0k.   cK:    .    ,KMM" << endl;
+    cout << "MMMMk.      .OMk.   cNMMd.   lWMWo   .lc.   .xX;   'Oo   '0k.   cO,   .,.   .kMM" << endl;
+    cout << "MMMMK,      ,KMk.   cNMMd.   oWMMKc.       .oXX:   'Oo   '0k.   cd.   :Xx.   oWM" << endl;
+    cout << "MMMMW0dddddd0WMXkddd0WMMKxddxKWMMMW0xollloxKWMWOdddkXKxddkNXkddd0Kxddd0WXxddd0WM" << endl;
+    cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+}
+
+void mostrarTitulo()
+{
+    cout << "MMMMMMMMMMMMMMNk;.    .,xNMMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMWd. .;lo:.  lNMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMX:  ;KMMX:  ,KMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMWx.  ,cc;. .dNMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMMWOc.    .:kNMMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMN0kkkkx;    ,xkkkk0NMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMO'                .kMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMKc,,,,,.    .',,,,:0MMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMWWWWWNo    cXWWWWWMMMMMMMMMMM" << endl;
+    cout << "MMMMMXKWMMMMMMMMWo    cNMMMMMMMMWKXWMMMM" << endl;
+    cout << "MMMNx'.c0WMMMMMMWo    cNMMMMMMWKl..oXMMM" << endl;
+    cout << "MW0;    .dNMMMMMWo    cNMMMMMNx'    ,OWM" << endl;
+    cout << "MWOl'   .oXMMMMMWo    cNMMMMMNd.   .ckNM" << endl;
+    cout << "MMMMO.  .dNMMMMMWo    cNMMMMMWk.  .xWMMM" << endl;
+    cout << "MMMMWx.  .c0WMMMWo    cNMMMWKl.  .oNMMMM" << endl;
+    cout << "MMMMMWk,   .:xKNWo    cNWKkc.   'xNMMMMM" << endl;
+    cout << "MMMMMMMXx,    .';.    .;,.    'oKMMMMMMM" << endl;
+    cout << "MMMMMMMMMNOo;.            .,lkXMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMWXOxo,    'oxOXWMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMMMMMXo;,lKMMMMMMMMMMMMMMMMM" << endl;
+    cout << "MMMMMMMMMMMMMMMMMMWWWWMMMMMMMMMMMMMMMMMM" << endl;
+    cout << "________________________________________" << endl;
+    cout << "        B A T A L H A   N A V A L       " << endl;
+    cout << "________________________________________" << endl;
+}
+
+int selecionarDificuldade() 
+//Essa função está usando retorno de parâmetros.
+{
+    int dificuldade = 0;    //para o 'if' de dificuldade
+    for (int i = 0; i < 1; i++)
+        {
+            cout << "Selecione o nivel de dificuldade: " << endl;
+            cout << "Digite o numero em questao!" << endl;
+            cout << "1 - Normal" << endl;
+            cout << "2 - Dificil" << endl;
+            cin >> dificuldade;
+            if (dificuldade == 1 || dificuldade == 2)
+            {
+                switch (dificuldade)
+                {
+                    case 1:
+                        return 1;
+                    break;
+                    case 2:
+                        return 2;
+                    break;
+                }
+                system("cls");
+            }
+            else
+            {
+                system("pause");
+            }
+        }
+}
+
+bool testeContinuar(char resposta)
+{
+    //teste de continuação:
+        if(resposta == 'S')
+        {
+            return true;
+        }
+        if(resposta == 'N')
+        {
+            return false;
+        }
+}
+
 int main()
 {
     string nome_1;                                                                  //top 1 do ranking
@@ -23,7 +132,7 @@ int main()
     char coluna_capa[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};          //posição da coluna na matriz 
     int linha;                                                                      //variável multípla para linhas
     int linha_atk;                                                                  //variável para linhas a serem atacadas
-    int aux_atk_conv;                                                               //conversor de char para int do ataque do jogador
+    int teste_atk;                                                               //conversor de char para int do ataque do jogador
     int aux_conv;                                                                   //conversor do posicionamento do jogador
     int dificuldade = 0;                                                            //para o 'if' de dificuldade
     int memo = 0;                                                                   //posição da memória
@@ -39,7 +148,6 @@ int main()
     char aux;                                                                       //auxiliar de posicionamento
     char aux_atk;                                                                   //auxiliar nos ataques
     bool continuar = true;                                                          //verifica se é preciso continuar o programa e exibir a mensagem
-    
     system("color B0");
     //Interface inicial:
     while ((continuar == true) && (memo < MEMORIA))
@@ -50,45 +158,12 @@ int main()
         string tabuleiro_jogador[DIMENSAO][DIMENSAO] = {""};                            //inicializando tabuleiro do jogador
         string tabuleiro_computador[DIMENSAO][DIMENSAO] = {""};                         //inicializando tabuleiro do computador
         string tabuleiro_capa[DIMENSAO][DIMENSAO] = {""};                               //inicializando tabuleiro de capa
-        cout << "MMMMMMMMMMMMMMNk;.    .,xNMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMWd. .;lo:.  lNMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMX:  ;KMMX:  ,KMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMWx.  ,cc;. .dNMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMWOc.    .:kNMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMN0kkkkx;    ,xkkkk0NMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMO'                .kMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMKc,,,,,.    .',,,,:0MMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMWWWWWNo    cXWWWWWMMMMMMMMMMM" << endl;
-        cout << "MMMMMXKWMMMMMMMMWo    cNMMMMMMMMWKXWMMMM" << endl;
-        cout << "MMMNx'.c0WMMMMMMWo    cNMMMMMMWKl..oXMMM" << endl;
-        cout << "MW0;    .dNMMMMMWo    cNMMMMMNx'    ,OWM" << endl;
-        cout << "MWOl'   .oXMMMMMWo    cNMMMMMNd.   .ckNM" << endl;
-        cout << "MMMMO.  .dNMMMMMWo    cNMMMMMWk.  .xWMMM" << endl;
-        cout << "MMMMWx.  .c0WMMMWo    cNMMMWKl.  .oNMMMM" << endl;
-        cout << "MMMMMWk,   .:xKNWo    cNWKkc.   'xNMMMMM" << endl;
-        cout << "MMMMMMMXx,    .';.    .;,.    'oKMMMMMMM" << endl;
-        cout << "MMMMMMMMMNOo;.            .,lkXMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMWXOxo,    'oxOXWMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMXo;,lKMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMWWWWMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "________________________________________" << endl;
-        cout << "        B A T A L H A   N A V A L       " << endl;
-        cout << "________________________________________" << endl;
+        mostrarTitulo();
         cout << endl;
         cout << "Deseja continuar? Se sim digite 'S',\n";
         cout << "caso contrario digite 'N'\n";
         cin >> resposta;
-
-        //teste de continuação:
-        if(resposta == 'S')
-        {
-            continuar = true;
-        }
-        if(resposta == 'N')
-        {
-            continuar = false;
-            break;
-        }
+        continuar = testeContinuar(resposta); 
 
         system("cls");
         //Armazenamento do nome:
@@ -96,32 +171,7 @@ int main()
         cout << "Digite um nickname:" << endl;
         getline(cin, nome[memo]);
         system("cls");
-        for (int i = 0; i < 1; i++)
-        {
-            cout << "Selecione o nivel de dificuldade: " << endl;
-            cout << "Digite o numero em questao!" << endl;
-            cout << "1 - Normal" << endl;
-            cout << "2 - Dificil" << endl;
-            cin >> dificuldade;
-            if (dificuldade == 1 || dificuldade == 2)
-            {
-                switch (dificuldade)
-                {
-                    case 1:
-                        dificuldade = 1;
-                    break;
-                    case 2:
-                        dificuldade = 2;
-                    break;
-                }
-                system("cls");
-            }
-            else
-            {
-                system("pause");
-            }
-        }
-        
+        dificuldade = selecionarDificuldade();
         //Posicionamento do submarinos do jogador
         //São 8 submarinos a serem posicionados
         //Apenas mudará a posição para 0 se o número armazenado na posição for diferente,
@@ -380,28 +430,31 @@ int main()
             cout << "_________________________________________________________________________________"<< endl;
             cout << "Qual casa deseja atacar?" << endl;
             cout << "Posicao:" << endl;
-            cin >> aux_atk;
+            cin.get();
+            cin >> teste_atk;
+            //cin >> aux_atk;
+            cin.get();
             cin >> linha_atk;
-            aux_atk_conv = ((int) aux_atk)-65;
+            //teste_atk = ((int)aux_atk) - 65;
             for (int i = 0; i < 1; i++)
             {
                 if (linha_atk >= 1 && linha_atk <= 8)
                 {
-                    if (aux_atk_conv >= 0 && aux_atk_conv <= 7)
+                    if (teste_atk >= 0 && teste_atk <= 7)
                     {
-                        if (tabuleiro_computador[linha_atk - 1][aux_atk_conv] == ""||
-                        tabuleiro_capa[linha_atk - 1][aux_atk_conv] == " * " ||
-                        tabuleiro_capa[linha_atk - 1][aux_atk_conv] == " S " ||
-                        tabuleiro_capa[linha_atk - 1][aux_atk_conv] == " H ")
+                        if (tabuleiro_computador[linha_atk - 1][teste_atk] == ""||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " * " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " S " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " H ")
                         {
-                            tabuleiro_capa[linha_atk-1][aux_atk_conv] = tabuleiro_computador[linha_atk-1][aux_atk_conv];
+                            tabuleiro_capa[linha_atk-1][teste_atk] = tabuleiro_computador[linha_atk-1][teste_atk];
                             jogador_1 = true;
                             pontos[memo]++;
                             i--;
                         }
                         else
                         {
-                            tabuleiro_capa[linha_atk - 1][aux_atk_conv] = " * ";
+                            tabuleiro_capa[linha_atk - 1][teste_atk] = " * ";
                             jogador_1 = false;
                         }
                     }
@@ -473,39 +526,12 @@ int main()
 
         if ((pontos_computador > pontos[memo]) && (pontos_computador >= 15)) 
         {
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-            cout << "MN0OOO000XNMMN0OOOOO0NN0OOO00KXWMMX0OOO000KXWMMMWXOxxxOXWMN0OOOOOOO0XN0OOOO0XMMM" << endl;
-            cout << "Mk'    ...,xNO'     .kk'    ...:0Wx.     ...lKMKl.     .oKx.       .dx.    .oNMM" << endl;
-            cout << "Mk.   ;,   'Ok.   ,coKk.   ;,   cXd   .;c'   oNl   'l.   oOo:.   .:okc      ;KMM" << endl;
-            cout << "Mk.  .xd.  .kk.  .xWWMk.  .do   :Xd   .xKc   lK:   :O;   cNMX:   ;XMK;  ..  .OMM" << endl;
-            cout << "Mk.  .xd.  .kk.   .,lKk.   ..  'kNd    ...  ;OX;   :O;   cNMX:   ;XMO.  ,:   oWM" << endl;
-            cout << "Mk.  .xd.  .kk.   .'cKk.   '.  'kNd   .,;.  ;OX;   :O;   cNMX:   ;XWd.  cd.  :XM" << endl;
-            cout << "Mk.  .xd.  .kk.  .dNWWk.  .xd   :Xd   .kXc   lK:   :O;   cNMX:   ;XNc   ',   '0M" << endl;
-            cout << "Mk.  .lc   .kk.   ckkKx.  .xd.  ;Kd   'kXl   cXc   ,x,   lWMX;   ;XK,    .   .xM" << endl;
-            cout << "Mk.        :Kk.      lx.  .xd.  ;Kd   'kXl   cNO,   .   ;0MMX:   ;Xk.   lO,   cN" << endl;
-            cout << "MXdoooooodkXMXxoooooo0KxoodKKdookNKdooxXW0ooo0WMXklcccokXMMMWOoooOWKdoodKWOoookN" << endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+            mostrarDerrota();
             break;
         }
         if ((pontos[memo] > pontos_computador) && (pontos[memo] >= 15))
         {
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMKo;;ckNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-            cout << "MMWNNNNWMWWNNNWWNNNNWWNNNNNNNNNNWMMWXl.,cxXWMMMWNNNNWWWMMMMWNNNNWMMWWNNNNNWMMMMM" << endl;
-            cout << "MMO;'''oNK:'''lx:'''dO:'''''''';OWOc'.....,l0WNo''''',,:dXM0:'''dNM0:''''':0MMMM" << endl;
-            cout << "MM0'   ,0x.   :d.   cx,.      ..xx.   ''    ,0X;    ..   cNk.   cNWd.     .dWMMM" << endl;
-            cout << "MMX:   .ko    ox.   cXK0l    :0KXc   .kd.   .dX:   .xl   '0k.   cNNc   .   cNMMM" << endl;
-            cout << "MMWo   .l:   .kk.   cNMMd.   lWMNc   .kd.    dX;   .l;   ;Kk.   cNK,  .;.  '0MMM" << endl;
-            cout << "MMMO.   ;,   ,0k.   cNMMd.   lWMN:   .kd..   oK:        ,kWk.   cNk.  .o,  .xMMM" << endl;
-            cout << "MMMK;   ..   cNk.   cNMMd.   lWMNc   .kd..   oK;   .c,  .cXk.   cXd   'd;   lNMM" << endl;
-            cout << "MMMWl        dWk.   cNMMd.   lWMNc   .kd..   dX;   .Oo   '0k.   cK:    .    ,KMM" << endl;
-            cout << "MMMMk.      .OMk.   cNMMd.   lWMWo   .lc.   .xX;   'Oo   '0k.   cO,   .,.   .kMM" << endl;
-            cout << "MMMMK,      ,KMk.   cNMMd.   oWMMKc.       .oXX:   'Oo   '0k.   cd.   :Xx.   oWM" << endl;
-            cout << "MMMMW0dddddd0WMXkddd0WMMKxddxKWMMMW0xollloxKWMWOdddkXKxddkNXkddd0Kxddd0WXxddd0WM" << endl;
-            cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+            mostrarVitoria();
             break;
         }
         memo++;    
