@@ -13,6 +13,12 @@
 
 using namespace std;
 
+//Uso de registro uso com vetor na chamada
+typedef struct{
+    string nome;
+    int pontos;
+} Jogador;
+
 void mostrarDerrota()
 {
     cout << "_________________________________________________________________________________"<< endl;
@@ -124,9 +130,8 @@ bool testeContinuar(char resposta)
 
 int main()
 {
-    string nome_1;                                                                  //top 1 do ranking
+    Jogador jogador[MEMORIA];
     char linha_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};           //posição da linha na matriz capa
-    char coluna_capa[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};          //posição da coluna na matriz 
     int linha_atk;                                                                  //variável para linhas a serem atacadas
     int teste_atk;                                                               //conversor de char para int do ataque do jogador
     int dificuldade = 0;                                                            //para o 'if' de dificuldade
@@ -148,7 +153,7 @@ int main()
         ataques_computador = 0;
         bool jogador_1 = false;                                                         //booleano para verificar o jogador com o recorde                                            //booleano para verificar de o humano ganhou
         bool sorteio_verdadeiro = false;                                                //booleano para verificar se o sorteio da casa é válido
-        string tabuleiro_capa[DIMENSAO][DIMENSAO] = {""};                               //inicializando tabuleiro de capa
+        string tabuleiro[DIMENSAO][DIMENSAO] = {""};                               //inicializando tabuleiro de capa
         mostrarTitulo();
         cout << endl;
         cout << "Deseja continuar? Se sim digite 'S',\n";
@@ -160,7 +165,7 @@ int main()
         //Armazenamento do nome:
         cin.get();
         cout << "Digite um nickname:" << endl;
-        getline(cin, nome[memo]);
+        getline(cin, jogador[memo].nome);
         system("cls");
         dificuldade = selecionarDificuldade();
         //Posicionamento do submarinos do jogador
@@ -197,103 +202,32 @@ int main()
             // Mostrar Tabuleiro capa
             
             //Sistema similar ao de seleção, com switch e if embutido para a confirmação.
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << " RODADA " << rodada[memo] << endl;
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "Qual casa deseja atacar?" << endl;
-            cout << "Posicao:" << endl;
-            cin.get();
-            cin >> teste_atk;
-            //cin >> aux_atk;
-            cin.get();
-            cin >> linha_atk;
-            //teste_atk = ((int)aux_atk) - 65;
-            for (int i = 0; i < 1; i++)
-            {
-                if (linha_atk >= 1 && linha_atk <= 8)
-                {
-                    if (teste_atk >= 0 && teste_atk <= 7)
-                    {
-                        if (tabuleiro_computador[linha_atk - 1][teste_atk] == ""||
-                        tabuleiro_capa[linha_atk - 1][teste_atk] == " * " ||
-                        tabuleiro_capa[linha_atk - 1][teste_atk] == " S " ||
-                        tabuleiro_capa[linha_atk - 1][teste_atk] == " H ")
-                        {
-                            tabuleiro_capa[linha_atk-1][teste_atk] = tabuleiro_computador[linha_atk-1][teste_atk];
-                            jogador_1 = true;
-                            pontos[memo]++;
-                            i--;
-                        }
-                        else
-                        {
-                            tabuleiro_capa[linha_atk - 1][teste_atk] = " * ";
-                            jogador_1 = false;
-                        }
-                    }
-                }
-            }
-            if (dificuldade == 2)
-            {
-                ataques_computador = 0;
-                while (sorteio_verdadeiro == false || ataques_computador < 2)
-                {
-                    linha_numerica_computador  = rand()%8;
-                    coluna_numerica_computador = rand()%8;
-                    if (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " || tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " )
-                    {
-                        sorteio_verdadeiro = true;
-                        if (sorteio_verdadeiro == true || ataques_computador == 1)
-                        {
-                            tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
-                            ataques_computador++;
-                        }
-                        pontos_computador++;
-                    }
-                    else
-                    {
-                        tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
-                    }
-                    ataques_computador++;
-                }
-            }
-            else
-            {
-                linha_numerica_computador  = rand()%8;
-                coluna_numerica_computador = rand()%8;
-                if ((tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " )
-                || (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " ))
-                {
-                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
-                    pontos_computador++;
-                }
-                else
-                {
-                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
-                }
-            }
+            //Sistema bugado  
+
+           
             rodada[memo]++;
             pontos_def[memo] = pontos[memo];
         system("cls");
         cout << "_________________________________________________________________________________"<< endl;
         cout << "rodada:" << rodada[memo] << endl;
         cout << "pontos:" << pontos_def[memo] << endl;
-        if (dificuldade == 1)
-        {
-            cout << "dificuldade: normal" << endl;
+            if (dificuldade == 1)
+            {
+                cout << "dificuldade: normal" << endl;
+            }
+            else
+            {
+                cout << "dificuldade: dificil" << endl;
+            }
         }
-        else
-        {
-            cout << "dificuldade: dificil" << endl;
-        }
-    }
     //Checando acertos do jogador:
         if (jogador_1 == true)
         {
-            cout << nome[memo] << " ACERTOU na rodada passada!" << endl;
+            cout << jogador[memo].nome << " ACERTOU na rodada passada!" << endl;
         }
         else
         {
-            cout << nome[memo] << " ERROU na rodada passada!" << endl;
+            cout << jogador[memo].nome << " ERROU na rodada passada!" << endl;
         }
 
         if ((pontos_computador > pontos[memo]) && (pontos_computador >= 15)) 
@@ -317,17 +251,8 @@ int main()
     }
     for (int i = 0; i < memo; i++)
     {
-        if(pontos[i] > top1)
-        {
-            top1 = pontos[i];
-            nome_1 = nome[i];
-        }
+        cout << "Rodada " << i << " : " <<  jogador[i].nome << ".................pontos: " << pontos[i] << endl;
     }
-    for (int i = 0; i < memo; i++)
-    {
-        cout << "Rodada " << i << " : " <<  nome[i] << ".................pontos: " << pontos[i] << endl;
-    }
-    cout << "Recorde: " << nome_1 << " pontos: " << top1 << endl;
     system("pause");
     return 0;
 

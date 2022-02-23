@@ -26,3 +26,85 @@ cout << endl;
                 }  
                 cout << endl;
             }
+
+Sistema de ataques do humano
+
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << " RODADA " << rodada[memo] << endl;
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << "Qual casa deseja atacar?" << endl;
+            cout << "Posicao:" << endl;
+            cin.get();
+            cin >> teste_atk;
+            //cin >> aux_atk;
+            cin.get();
+            cin >> linha_atk;
+            //teste_atk = ((int)aux_atk) - 65;
+            for (int i = 0; i < 1; i++)
+            {
+                if (linha_atk >= 1 && linha_atk <= 8)
+                {
+                    if (teste_atk >= 0 && teste_atk <= 7)
+                    {
+                        if (tabuleiro_computador[linha_atk - 1][teste_atk] == ""||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " * " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " S " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " H ")
+                        {
+                            tabuleiro_capa[linha_atk-1][teste_atk] = tabuleiro_computador[linha_atk-1][teste_atk];
+                            jogador_1 = true;
+                            pontos[memo]++;
+                            i--;
+                        }
+                        else
+                        {
+                            tabuleiro_capa[linha_atk - 1][teste_atk] = " * ";
+                            jogador_1 = false;
+                        }
+                    }
+                }
+            }
+
+Sistema de sorteio para ataques do computador.
+
+
+
+ if (dificuldade == 2)
+            {
+                ataques_computador = 0;
+                while (sorteio_verdadeiro == false || ataques_computador < 2)
+                {
+                    linha_numerica_computador  = rand()%8;
+                    coluna_numerica_computador = rand()%8;
+                    if (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " || tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " )
+                    {
+                        sorteio_verdadeiro = true;
+                        if (sorteio_verdadeiro == true || ataques_computador == 1)
+                        {
+                            tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+                            ataques_computador++;
+                        }
+                        pontos_computador++;
+                    }
+                    else
+                    {
+                        tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+                    }
+                    ataques_computador++;
+                }
+            }
+            else
+            {
+                linha_numerica_computador  = rand()%8;
+                coluna_numerica_computador = rand()%8;
+                if ((tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " )
+                || (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " ))
+                {
+                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+                    pontos_computador++;
+                }
+                else
+                {
+                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+                }
+            }
