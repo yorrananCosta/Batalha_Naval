@@ -125,21 +125,14 @@ bool testeContinuar(char resposta)
 int main()
 {
     string nome_1;                                                                  //top 1 do ranking
-    string nome[MEMORIA];                                                           //nome do jogador
-    char linha_jogador[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};        //posição da linha de jogador
-    char coluna_jogador[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};       //posição da coluna de jogador
     char linha_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};           //posição da linha na matriz capa
     char coluna_capa[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};          //posição da coluna na matriz 
-    int linha;                                                                      //variável multípla para linhas
     int linha_atk;                                                                  //variável para linhas a serem atacadas
     int teste_atk;                                                               //conversor de char para int do ataque do jogador
-    int aux_conv;                                                                   //conversor do posicionamento do jogador
     int dificuldade = 0;                                                            //para o 'if' de dificuldade
     int memo = 0;                                                                   //posição da memória
     int pontos[MEMORIA] = {0};                                                      //pontos armazenados por memoria
     int pontos_computador = 0;                                                      //pontuação do computador
-    int linha_numerica_computador = 0;                                              //linha para matriz computador
-    int coluna_numerica_computador = 0;                                             //coluna para matriz computador
     int rodada[MEMORIA] = {0};                                                      //contador de rodadas
     int pontos_def[MEMORIA] = {0};                                                  //conversor de pontos de rodada (não essencial)
     int ataques_computador;                                                         //número de ataques do computador, serve para 
@@ -155,8 +148,6 @@ int main()
         ataques_computador = 0;
         bool jogador_1 = false;                                                         //booleano para verificar o jogador com o recorde                                            //booleano para verificar de o humano ganhou
         bool sorteio_verdadeiro = false;                                                //booleano para verificar se o sorteio da casa é válido
-        string tabuleiro_jogador[DIMENSAO][DIMENSAO] = {""};                            //inicializando tabuleiro do jogador
-        string tabuleiro_computador[DIMENSAO][DIMENSAO] = {""};                         //inicializando tabuleiro do computador
         string tabuleiro_capa[DIMENSAO][DIMENSAO] = {""};                               //inicializando tabuleiro de capa
         mostrarTitulo();
         cout << endl;
@@ -179,251 +170,32 @@ int main()
         for (int i = 0; i < 4; i++)
         {
             //Mostrar tabuleiro do jogador:
-            cout << endl;
-            cout << endl;
-            cout << "   ";
-            for (int i = 0; i < DIMENSAO; i++)
-            {
-                cout << coluna_jogador[i] << "  ";
-            }
-            cout << endl;         
-            for (int l = 0; l < DIMENSAO; l++)
-            {
-                cout << linha_jogador[l] << " ";  
-                for(int c = 0; c < DIMENSAO; c++)
-                {
-                    if (tabuleiro_jogador[l][c] == "")
-                    {
-                        tabuleiro_jogador[l][c] = " ~ ";
-                    }
-                    cout << tabuleiro_jogador[l][c]; 
-                }  
-                cout << endl;
-            }
-            cout << "Defina as posicoes dos Submarinos (tamanho 1):   " << endl;
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "*Representacao dos Submarinos:          S        " << endl;
-            cout << "Posicao:" << endl;
-            cin >> aux;
-            cin >> linha;
-            aux_conv = ((int)aux) - 65;
-            cout << "int aux:" << aux_conv << endl;
-            if (linha >= 1 && linha <= 8)
-            {
-                if (aux_conv >= 0 && aux_conv <= 7)
-                {
-                    if (tabuleiro_jogador[linha-1][aux_conv] == " ~ ")
-                    {
-                        tabuleiro_jogador[linha-1][aux_conv] = " S ";
-                    }
-                    else
-                    {
-                        cout << "ERRO" << endl;
-                        i--;
-                    }
-                }
-                else
-                {
-                    cout << "tente novamente!" << endl;
-                    i--;
-                }
-            }
-            else
-            {
-                cout << "tente novamente!" << endl;
-                i--;
-            }
-            system("cls");
-        }  
+            //Posicionamento de submarinos do jogador
+            //Usa as variáveis: aux, linha, auxconv, tabuleiro_jogador
+        } 
 
         
         
         for (int i = 0; i < 3; i++)
         {
-            cout << endl;
-            cout << endl;
-            cout << "   ";
-            for (int i = 0; i < DIMENSAO; i++)
-            {
-                cout << coluna_jogador[i] << "  ";
-            }
-            
-            cout << endl;
-            
-            for (int l = 0; l < DIMENSAO; l++)
-            {
-                cout << linha_jogador[l] << " ";  
-                for(int c = 0; c < DIMENSAO; c++)
-                {
-                    if (tabuleiro_jogador[l][c] == "")
-                    {
-                        tabuleiro_jogador[l][c] = " ~ ";
-                    }
-                    
-                    cout << tabuleiro_jogador[l][c]; 
-                }  
-                cout << endl;
-            }
-            // Posicionamento dos hidroaviões
-            cout << "Defina as posicoes dos Hidroavioes (tamanho 4): " << endl;
-            cout << "Digite o ponto central do hidroaviao!" << endl;
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "*Representacao dos Hidroavioes:       H          " << endl;
-            cout << "                                     HHH         " << endl;
-            cout << "Posicao:" << endl;
-            cin >> aux;
-            cin >> linha;
-            aux_conv = ((int)aux) - 65;
-            if (linha >= 1 && linha <= 8)
-            {
-                if (aux_conv >= 0 && aux_conv <= 6)
-                {
-                    if (tabuleiro_jogador[linha - 1][aux_conv] == " ~ " && 
-                    tabuleiro_jogador[linha - 1][aux_conv-1] == " ~ " && 
-                    tabuleiro_jogador[linha - 1][aux_conv+1] == " ~ ")
-                    {
-                        tabuleiro_jogador[linha - 1][aux_conv-1] = " H ";
-                        tabuleiro_jogador[linha - 1][aux_conv] = " H ";
-                        tabuleiro_jogador[linha - 1][aux_conv+1] = " H ";
-                        //O segundo 'if' verifica se todas as linhas possíveis estão vagas
-                        //A prioridade de inserção é a linha superior
-                        if (tabuleiro_jogador[linha - 2][aux_conv] == " ~ ")
-                        {
-                            tabuleiro_jogador[linha - 2][aux_conv] = " H ";
-                        }
-                        else
-                        {
-                            if (tabuleiro_jogador[linha][aux_conv] == " ~ ")
-                            {
-                                tabuleiro_jogador[linha][aux_conv] = " H ";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        cout << "tente novamente!" << endl;
-                        i--;
-                    }
-                }
-                else
-                {
-                    cout << "tente novamente!" << endl;
-                    i--;
-                }
-            }
-            else
-            {
-                cout << "tente novamente!" << endl;
-                i--;
-            }
-            system("cls");
+            //Mostrar tabuleiro do jogador.
+            // Posicionamento dos hidroaviões do jogador:
+            //variáveis: aux, linha, aux_conv, tabuleiro_jogador.
         }
 
         // Posicionamento do Computador:
-        srand(time(NULL));
-    
-        //Sorteio de submarino
-        for (int i = 0; i < 4; i++)
-        {
-            linha_numerica_computador  = rand()%8;
-            coluna_numerica_computador = rand()%8;
-            if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "")
-            {
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " S ";
-            }
-            else
-            {
-                i--;
-            }
-        }
-        //Sorteio de hidroaviao
-        for (int i = 0; i < 3; i++)
-        {
-            linha_numerica_computador  = rand()%8;
-            coluna_numerica_computador = rand()%8;
-            if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
-                tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] == "") 
-            {
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
-                tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] = " H ";
-            }
-            else
-            {
-                if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
-                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
-                tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] == "") 
-                {
-                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
-                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
-                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
-                    tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] = " H ";
-                } 
-                else
-                {
-                    i--;
-                }
-            }
-        }
+        // variáveis: aux, linha, auxconv, tabuleiro_jogador.
+
+        // Sorteio de hidroaviao
+        // variáveis: aux, linha, auxconv, tabuleiro_jogador. 
 
         //Partida 
         while (rodada[memo] < 64 && pontos[memo] < 16 && pontos_computador < 16)
         {
             //Tabuleiro do jogador:
-            cout << endl;
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << nome[memo] << ":"<< endl;
-            cout << endl;
-            cout << endl;
-            cout << "   ";
-            for (int i = 0; i < DIMENSAO; i++)
-            {
-                cout << coluna_jogador[i] << "  ";
-            }
             
-            cout << endl;
+            // Mostrar Tabuleiro capa
             
-            for (int l = 0; l < DIMENSAO; l++)
-            {
-                cout << linha_jogador[l] << " ";  
-                for(int c = 0; c < DIMENSAO; c++)
-                {
-                    cout << tabuleiro_jogador[l][c]; 
-                }  
-                cout << endl;
-            }
-            // Tabuleiro capa
-            cout << "_________________________________________________________________________________"<< endl;
-            cout << "Computador:"<< endl;
-            cout << endl;
-            cout << endl;
-            cout << "   ";
-            for (int i = 0; i < DIMENSAO; i++)
-            {
-                cout << coluna_capa[i] << "  ";
-            }
-            cout << endl;
-            
-            for (int l = 0; l < DIMENSAO; l++)
-            {
-                cout << linha_capa[l] << " ";  
-                for(int c = 0; c < DIMENSAO; c++)
-                {
-                    if (tabuleiro_capa[l][c] == "")
-                    {
-                        tabuleiro_capa[l][c] = " ~ ";
-                    }
-                    cout << tabuleiro_capa[l][c];
-                }  
-                cout << endl;
-            }
-            cout << endl;
-            cout << endl;
-            cout << endl;
             //Sistema similar ao de seleção, com switch e if embutido para a confirmação.
             cout << "_________________________________________________________________________________"<< endl;
             cout << " RODADA " << rodada[memo] << endl;
