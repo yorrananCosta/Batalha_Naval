@@ -7,26 +7,22 @@ string tabuleiro_jogador[DIMENSAO][DIMENSAO] = {""};                            
 Mostrar tabuleiro do jogador:
 -- Atualiza conforme for se posicionando as peças, repitirá 4 vezes para posicionar submarinos e 2 para hidro.
 cout << endl;
-            cout << endl;
-            cout << "   ";
-            for (int i = 0; i < DIMENSAO; i++)
-            {
-                cout << coluna_jogador[i] << "  ";
-            }
-            cout << endl;         
-            for (int l = 0; l < DIMENSAO; l++)
-            {
-                cout << linha_jogador[l] << " ";  
-                for(int c = 0; c < DIMENSAO; c++)
-                {
-                    if (tabuleiro_jogador[l][c] == "")
-                    {
-                        tabuleiro_jogador[l][c] = " ~ ";
-                    }
-                    cout << tabuleiro_jogador[l][c]; 
-                }  
-                cout << endl;
-            }
+cout << endl;
+cout << "   ";
+    for (int i = 0; i < DIMENSAO; i++)
+        cout << coluna_jogador[i] << "  ";
+    cout << endl;         
+    for (int l = 0; l < DIMENSAO; l++)
+    {
+        cout << linha_jogador[l] << " ";  
+        for(int c = 0; c < DIMENSAO; c++)
+        {
+            if (tabuleiro_jogador[l][c] == "")
+                tabuleiro_jogador[l][c] = " ~ ";
+            cout << tabuleiro_jogador[l][c]; 
+        }  
+    cout << endl;
+    }
             
 Posicionamento do jogador de submarinos:
 

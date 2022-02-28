@@ -128,10 +128,323 @@ bool testeContinuar(char resposta)
         }
 }
 
+void mostrar_tabuleiro_jogador(char linha[DIMENSAO], char coluna[DIMENSAO], string tabuleiro[DIMENSAO][DIMENSAO])
+{
+    //Mostrar tabuleiro do jogador:
+    // Atualiza conforme for se posicionando as peças, repitirá 4 vezes para posicionar submarinos e 2 para hidro.
+    cout << endl;
+    cout << endl;
+    cout << "   ";
+        for (int i = 0; i < DIMENSAO; i++)
+            cout << coluna[i] << "  "; 
+        cout << endl; 
+        for (int l = 0; l < DIMENSAO; l++)
+        {
+            cout << linha[l] << " ";  
+            for(int c = 0; c < DIMENSAO; c++)
+            {
+                if (tabuleiro[l][c] == "")
+                {
+                    tabuleiro[l][c] = " ~ ";
+                }
+                cout << tabuleiro[l][c]; 
+            } 
+        cout << endl;
+        }     
+        
+        
+}
+
+void posicionamento_submarino_jogador(char aux, int linha, int aux_conv, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
+{
+    int i = 0;
+    cout << "Defina as posicoes dos Submarinos (tamanho 1):   " << endl;
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "*Representacao dos Submarinos:          S        " << endl;
+    cout << "Posicao:" << endl;
+    cin >> aux;
+    cin >> linha;
+    aux_conv = ((int)aux) - 65;
+    cout << "int aux:" << aux_conv << endl;
+        if (linha >= 1 && linha <= 8)
+        {
+            if (aux_conv >= 0 && aux_conv <= 7)
+            {
+                if (tabuleiro_jogador[linha-1][aux_conv] == " ~ ")
+                {
+                    tabuleiro_jogador[linha-1][aux_conv] = " S ";
+                }
+                else
+                {
+                    cout << "ERRO" << endl;
+                    i--;
+                }
+            }
+            else
+            {
+                cout << "tente novamente!" << endl;
+                i--;
+            }
+        }
+        else
+        {
+            cout << "tente novamente!" << endl;
+            i--;
+        }
+    system("cls");
+}
+
+void posicionamento_hidroaviao_jogador(char aux, int linha, int aux_conv, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
+{
+    int i;
+    cout << "Defina as posicoes dos Hidroavioes (tamanho 4): " << endl;
+    cout << "Digite o ponto central do hidroaviao!" << endl;
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "*Representacao dos Hidroavioes:       H          " << endl;
+    cout << "                                     HHH         " << endl;
+    cout << "Posicao:" << endl;
+    cin >> aux;
+    cin >> linha;
+    aux_conv = ((int)aux) - 65;
+    if (linha >= 1 && linha <= 8)
+    {
+        if (aux_conv >= 0 && aux_conv <= 6)
+        {
+            if (tabuleiro_jogador[linha - 1][aux_conv] == " ~ " && 
+            tabuleiro_jogador[linha - 1][aux_conv-1] == " ~ " && 
+            tabuleiro_jogador[linha - 1][aux_conv+1] == " ~ ")
+            {
+                tabuleiro_jogador[linha - 1][aux_conv-1] = " H ";
+                tabuleiro_jogador[linha - 1][aux_conv] = " H ";
+                tabuleiro_jogador[linha - 1][aux_conv+1] = " H ";
+                //O segundo 'if' verifica se todas as linhas possíveis estão vagas
+                //A prioridade de inserção é a linha superior
+                if (tabuleiro_jogador[linha - 2][aux_conv] == " ~ ")
+                {
+                    tabuleiro_jogador[linha - 2][aux_conv] = " H ";
+                }
+                else
+                {
+                    if (tabuleiro_jogador[linha][aux_conv] == " ~ ")
+                        tabuleiro_jogador[linha][aux_conv] = " H ";
+                }
+            }
+            else
+            {
+                cout << "tente novamente!" << endl;
+                i--;
+            }
+        }
+        else
+        {
+            cout << "tente novamente!" << endl;
+            i--;
+        }
+    }
+    else
+    {
+        cout << "tente novamente!" << endl;
+        i--;
+    }
+    system("cls");
+}
+
+void posicionamento_computador(int linha_numerica_computador, int coluna_numerica_computador, string tabuleiro_computador[DIMENSAO][DIMENSAO])
+{
+    srand(time(NULL));
+    //Sorteio de submarino
+    for (int i = 0; i < 4; i++)
+    {
+        linha_numerica_computador  = rand()%8;
+        coluna_numerica_computador = rand()%8;
+        if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "")
+        {
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " S ";
+        }
+        else
+        {
+            i--;
+        }
+    }
+
+    //Sorteio de posição de hidroavião do computador:
+    for (int i = 0; i < 3; i++)
+    {
+        linha_numerica_computador  = rand()%8;
+        coluna_numerica_computador = rand()%8;
+        if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
+            tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] == "") 
+        {
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
+            tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] = " H ";
+        }
+        else
+        {
+            if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
+            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
+            tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] == "") 
+            {
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
+                tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] = " H ";
+            } 
+            else
+            {
+                i--;
+            }
+        }
+    }
+}
+
+void montar_tabuleiro_jogador(Jogador jogador[MEMORIA], int memo, char linha[DIMENSAO], char coluna[DIMENSAO], string tabuleiro[DIMENSAO][DIMENSAO])
+{
+    cout << endl;
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << jogador[memo].nome << ":"<< endl;
+    cout << endl;
+    cout << endl;
+    cout << "   ";
+    for (int i = 0; i < DIMENSAO; i++)
+    {
+        cout << coluna[i] << "  ";
+    } 
+    cout << endl;
+    for (int l = 0; l < DIMENSAO; l++)
+    {
+        cout << linha[l] << " ";  
+        for(int c = 0; c < DIMENSAO; c++)
+        {
+            cout << tabuleiro[l][c]; 
+        }  
+        cout << endl;
+    }
+
+}
+
+void mostrar_tabuleiro_capa(char linha[DIMENSAO], char coluna[DIMENSAO], string tabuleiro[DIMENSAO][DIMENSAO])
+{
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "Computador:"<< endl;
+    cout << endl;
+    cout << endl;
+    cout << "   ";
+    for (int i = 0; i < DIMENSAO; i++)
+    {
+        cout << coluna[i] << "  ";
+    }
+    cout << endl;
+    for (int l = 0; l < DIMENSAO; l++)
+    {
+        cout << linha[l] << " ";  
+        for(int c = 0; c < DIMENSAO; c++)
+        {
+            if (tabuleiro[l][c] == "")
+            {
+                tabuleiro[l][c] = " ~ ";
+            }
+            cout << tabuleiro[l][c];
+        }  
+        cout << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+}
+
+void ataques_humano(int rodada[MEMORIA], string tabuleiro_capa[DIMENSAO][DIMENSAO], string tabuleiro_computador[DIMENSAO][DIMENSAO], int pontos[MEMORIA], int memo)
+{
+    int conv_atk;
+    int linha_atk;
+    char aux_atk;
+
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << " RODADA " << rodada[memo] << endl;
+    cout << "_________________________________________________________________________________"<< endl;
+    cout << "Qual casa deseja atacar?" << endl;
+    cout << "Posicao:" << endl;
+    cin.get();
+    cin >> aux_atk;
+    cin >> linha_atk;
+    conv_atk = ((int)aux_atk) - 65;
+    for (int i = 0; i < 1; i++)
+    {
+        if (linha_atk >= 1 && linha_atk <= 8)
+        {
+            if (conv_atk >= 0 && conv_atk <= 7)
+            {
+                if (tabuleiro_computador[linha_atk - 1][conv_atk] == ""||
+                tabuleiro_capa[linha_atk - 1][conv_atk] == " * " ||
+                tabuleiro_capa[linha_atk - 1][conv_atk] == " S " ||
+                tabuleiro_capa[linha_atk - 1][conv_atk] == " H ")
+                {
+                    tabuleiro_capa[linha_atk-1][conv_atk] = tabuleiro_computador[linha_atk-1][conv_atk];
+                    pontos[memo]++;
+                    i--;
+                }
+                else
+                {
+                    tabuleiro_capa[linha_atk - 1][conv_atk] = " * ";
+                }
+            }
+        }
+    }
+}
+
+void sorteio_ataques_computador(int dificuldade, int ataques_computador, int pontos_computador, bool sorteio_verdadeiro, int linha_numerica_computador, int coluna_numerica_computador, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
+{
+
+    if (dificuldade == 2)
+    {
+        ataques_computador = 0;
+        while (sorteio_verdadeiro == false || ataques_computador < 2)
+        {
+            linha_numerica_computador  = rand()%8;
+            coluna_numerica_computador = rand()%8;
+            if (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " || tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " )
+            {
+                sorteio_verdadeiro = true;
+                if (sorteio_verdadeiro == true || ataques_computador == 1)
+                {
+                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+                    ataques_computador++;
+                }
+                pontos_computador++;
+            }
+            else
+            {
+                tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+            }
+            ataques_computador++;
+        }
+    }
+    else
+    {
+        linha_numerica_computador  = rand()%8;
+        coluna_numerica_computador = rand()%8;
+        if ((tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " )
+        || (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " ))
+        {
+            tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+            pontos_computador++;
+        }
+        else
+        {
+            tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+        }
+    }
+}
+
 int main()
 {
     Jogador jogador[MEMORIA];
     char linha_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};           //posição da linha na matriz capa
+    char coluna_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};
     int linha_atk;                                                                  //variável para linhas a serem atacadas
     int teste_atk;                                                               //conversor de char para int do ataque do jogador
     int dificuldade = 0;                                                            //para o 'if' de dificuldade
@@ -140,6 +453,12 @@ int main()
     int pontos_computador = 0;                                                      //pontuação do computador
     int rodada[MEMORIA] = {0};                                                      //contador de rodadas
     int pontos_def[MEMORIA] = {0};                                                  //conversor de pontos de rodada (não essencial)
+    int linha_numerica_computador = 0;                                              //linha para matriz computador
+    int coluna_numerica_computador = 0;  
+    char linha_jogador[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};        //posição da linha de jogador
+    char coluna_jogador[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};       //posição da coluna de jogador
+    int linha;                                                                      //variável multípla para linhas
+    int aux_conv;                                                                   //conversor do posicionamento do jogador
     int ataques_computador;                                                         //número de ataques do computador, serve para 
     int top1 = INT_MIN;                                                             //valor minimo para não ter problemas no ranking
     char resposta;                                                                  //resposta S ou N se é desejavel continuar
@@ -153,7 +472,9 @@ int main()
         ataques_computador = 0;
         bool jogador_1 = false;                                                         //booleano para verificar o jogador com o recorde                                            //booleano para verificar de o humano ganhou
         bool sorteio_verdadeiro = false;                                                //booleano para verificar se o sorteio da casa é válido
-        string tabuleiro[DIMENSAO][DIMENSAO] = {""};                               //inicializando tabuleiro de capa
+        string tabuleiro[DIMENSAO][DIMENSAO] = {""};                                    //inicializando tabuleiro de capa
+        string tabuleiro_jogador[DIMENSAO][DIMENSAO] = {""};                            //inicializando tabuleiro do jogador
+        string tabuleiro_computador[DIMENSAO][DIMENSAO] = {""};                         //inicializando tabuleiro do computador
         mostrarTitulo();
         cout << endl;
         cout << "Deseja continuar? Se sim digite 'S',\n";
@@ -169,13 +490,13 @@ int main()
         system("cls");
         dificuldade = selecionarDificuldade();
         //Posicionamento do submarinos do jogador
-        //São 8 submarinos a serem posicionados
+        //São 4 submarinos a serem posicionados
         //Apenas mudará a posição para 0 se o número armazenado na posição for diferente,
         //evitando armazenar mais de duas vezes
         for (int i = 0; i < 4; i++)
         {
-            //Mostrar tabuleiro do jogador:
-            //Posicionamento de submarinos do jogador
+            mostrar_tabuleiro_jogador(linha_jogador, coluna_jogador, tabuleiro_jogador);
+            posicionamento_submarino_jogador(aux, linha, aux_conv, tabuleiro_jogador);
             //Usa as variáveis: aux, linha, auxconv, tabuleiro_jogador
         } 
 
@@ -183,28 +504,22 @@ int main()
         
         for (int i = 0; i < 3; i++)
         {
-            //Mostrar tabuleiro do jogador.
-            // Posicionamento dos hidroaviões do jogador:
+            mostrar_tabuleiro_jogador(linha_jogador, coluna_jogador, tabuleiro_jogador);
+            posicionamento_hidroaviao_jogador(aux, linha, aux_conv, tabuleiro_jogador);
             //variáveis: aux, linha, aux_conv, tabuleiro_jogador.
         }
 
         // Posicionamento do Computador:
-        // variáveis: aux, linha, auxconv, tabuleiro_jogador.
-
-        // Sorteio de hidroaviao
-        // variáveis: aux, linha, auxconv, tabuleiro_jogador. 
-
+        posicionamento_computador(linha_numerica_computador, coluna_numerica_computador, tabuleiro_computador);
         //Partida 
         while (rodada[memo] < 64 && pontos[memo] < 16 && pontos_computador < 16)
         {
-            //Tabuleiro do jogador:
-            
-            // Mostrar Tabuleiro capa
-            
+            montar_tabuleiro_jogador(jogador, memo, linha_jogador, coluna_jogador, tabuleiro_jogador);
+            mostrar_tabuleiro_capa(linha_capa, coluna_capa, tabuleiro);
             //Sistema similar ao de seleção, com switch e if embutido para a confirmação.
             //Sistema bugado  
-
-           
+            ataques_humano(rodada, tabuleiro, tabuleiro_computador, pontos, memo);
+            sorteio_ataques_computador(dificuldade, ataques_computador, pontos_computador, sorteio_verdadeiro, linha_numerica_computador, coluna_numerica_computador, tabuleiro_jogador);
             rodada[memo]++;
             pontos_def[memo] = pontos[memo];
         system("cls");
