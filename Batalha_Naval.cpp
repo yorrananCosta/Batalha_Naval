@@ -378,19 +378,26 @@ void ataques_humano(int rodada[MEMORIA], string tabuleiro_capa[DIMENSAO][DIMENSA
         {
             if (conv_atk >= 0 && conv_atk <= 7)
             {
-                if (tabuleiro_computador[linha_atk - 1][conv_atk] == ""||
-                tabuleiro_capa[linha_atk - 1][conv_atk] == " * " ||
-                tabuleiro_capa[linha_atk - 1][conv_atk] == " S " ||
-                tabuleiro_capa[linha_atk - 1][conv_atk] == " H ")
+                if (tabuleiro_capa[linha_atk - 1][conv_atk] == " S " ||
+                    tabuleiro_capa[linha_atk - 1][conv_atk] == " H " ||
+                    tabuleiro_capa[linha_atk - 1][conv_atk] == " * ")
                 {
-                    tabuleiro_capa[linha_atk-1][conv_atk] = tabuleiro_computador[linha_atk-1][conv_atk];
-                    pontos[memo]++;
+                    cout << "Ataque outro quadrante" << endl;
                     i--;
                 }
                 else
                 {
-                    tabuleiro_capa[linha_atk - 1][conv_atk] = " * ";
-                }
+                    if (tabuleiro_computador[linha_atk - 1][conv_atk] == "")
+                    {
+                        tabuleiro_capa[linha_atk - 1][conv_atk] = " * ";
+                        i++;
+                    }
+                    else
+                    {
+                        tabuleiro_capa[linha_atk - 1][conv_atk] = tabuleiro_computador[linha_atk - 1][conv_atk];
+                        pontos[memo]++;
+                    }
+                }  
             }
         }
     }
@@ -444,7 +451,7 @@ int main()
 {
     Jogador jogador[MEMORIA];
     char linha_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};           //posição da linha na matriz capa
-    char coluna_capa[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};
+    char coluna_capa[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
     int linha_atk;                                                                  //variável para linhas a serem atacadas
     int teste_atk;                                                               //conversor de char para int do ataque do jogador
     int dificuldade = 0;                                                            //para o 'if' de dificuldade
