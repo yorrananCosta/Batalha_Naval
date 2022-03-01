@@ -157,26 +157,33 @@ void mostrar_tabuleiro_jogador(char linha[DIMENSAO], char coluna[DIMENSAO], stri
 
 void posicionamento_submarino_jogador(char aux, int linha, int aux_conv, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
 {
-    int i = 0;
     cout << "Defina as posicoes dos Submarinos (tamanho 1):   " << endl;
     cout << "_________________________________________________________________________________"<< endl;
     cout << "*Representacao dos Submarinos:          S        " << endl;
     cout << "Posicao:" << endl;
-    cin >> aux;
-    cin >> linha;
-    aux_conv = ((int)aux) - 65;
-    cout << "int aux:" << aux_conv << endl;
-        if (linha >= 1 && linha <= 8)
-        {
-            if (aux_conv >= 0 && aux_conv <= 7)
+    for (int i = 0; i < 1; i++)
+    {
+        cin >> aux;
+        cin >> linha;
+        aux_conv = ((int)aux) - 65;
+        cout << "int aux:" << aux_conv << endl;
+            if (linha >= 1 && linha <= 8)
             {
-                if (tabuleiro_jogador[linha-1][aux_conv] == " ~ ")
+                if (aux_conv >= 0 && aux_conv <= 7)
                 {
-                    tabuleiro_jogador[linha-1][aux_conv] = " S ";
+                    if (tabuleiro_jogador[linha-1][aux_conv] == " ~ ")
+                    {
+                        tabuleiro_jogador[linha-1][aux_conv] = " S ";
+                    }
+                    else
+                    {
+                        cout << "ERRO" << endl;
+                        i--;
+                    }
                 }
                 else
                 {
-                    cout << "ERRO" << endl;
+                    cout << "tente novamente!" << endl;
                     i--;
                 }
             }
@@ -185,30 +192,27 @@ void posicionamento_submarino_jogador(char aux, int linha, int aux_conv, string 
                 cout << "tente novamente!" << endl;
                 i--;
             }
-        }
-        else
-        {
-            cout << "tente novamente!" << endl;
-            i--;
-        }
+    }
+    
     system("cls");
 }
 
 void posicionamento_hidroaviao_jogador(char aux, int linha, int aux_conv, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
 {
-    int i;
-    cout << "Defina as posicoes dos Hidroavioes (tamanho 4): " << endl;
-    cout << "Digite o ponto central do hidroaviao!" << endl;
-    cout << "_________________________________________________________________________________"<< endl;
-    cout << "*Representacao dos Hidroavioes:       H          " << endl;
-    cout << "                                     HHH         " << endl;
-    cout << "Posicao:" << endl;
-    cin >> aux;
-    cin >> linha;
-    aux_conv = ((int)aux) - 65;
-    if (linha >= 1 && linha <= 8)
+    for(int i = 0; i < 1; i++)
     {
-        if (aux_conv >= 0 && aux_conv <= 6)
+        cout << "Defina as posicoes dos Hidroavioes (tamanho 4): " << endl;
+        cout << "Digite o ponto central do hidroaviao!" << endl;
+        cout << "_________________________________________________________________________________"<< endl;
+        cout << "*Representacao dos Hidroavioes:       H          " << endl;
+        cout << "                                     HHH         " << endl;
+        cout << "Posicao:" << endl;
+        cin >> aux;
+        cin >> linha;
+        aux_conv = ((int)aux) - 65;
+        if (linha >= 1 && linha <= 8)
+        {
+        if (aux_conv >= 1 && aux_conv <= 6)
         {
             if (tabuleiro_jogador[linha - 1][aux_conv] == " ~ " && 
             tabuleiro_jogador[linha - 1][aux_conv-1] == " ~ " && 
@@ -222,11 +226,13 @@ void posicionamento_hidroaviao_jogador(char aux, int linha, int aux_conv, string
                 if (tabuleiro_jogador[linha - 2][aux_conv] == " ~ ")
                 {
                     tabuleiro_jogador[linha - 2][aux_conv] = " H ";
+                    i++;
                 }
                 else
                 {
                     if (tabuleiro_jogador[linha][aux_conv] == " ~ ")
                         tabuleiro_jogador[linha][aux_conv] = " H ";
+                    i++;
                 }
             }
             else
@@ -240,13 +246,14 @@ void posicionamento_hidroaviao_jogador(char aux, int linha, int aux_conv, string
             cout << "tente novamente!" << endl;
             i--;
         }
+        }
+        else
+        {
+            cout << "tente novamente!" << endl;
+            i--;
+        }  
+        system("cls");
     }
-    else
-    {
-        cout << "tente novamente!" << endl;
-        i--;
-    }
-    system("cls");
 }
 
 void posicionamento_computador(int linha_numerica_computador, int coluna_numerica_computador, string tabuleiro_computador[DIMENSAO][DIMENSAO])
@@ -272,32 +279,39 @@ void posicionamento_computador(int linha_numerica_computador, int coluna_numeric
     {
         linha_numerica_computador  = rand()%8;
         coluna_numerica_computador = rand()%8;
-        if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
-            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
-            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
-            tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] == "") 
-        {
-            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
-            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
-            tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
-            tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] = " H ";
-        }
-        else
+        if(coluna_numerica_computador >= 1 && coluna_numerica_computador <= 6)
         {
             if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
             tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
             tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
-            tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] == "") 
+            tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] == "") 
             {
                 tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
                 tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
                 tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
-                tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] = " H ";
-            } 
+                tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] = " H ";
+            }
             else
             {
-                i--;
-            }
+                if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
+                tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] == "") 
+                {
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
+                    tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] = " H ";
+                } 
+                else
+                {
+                    i--;
+                }
+        }
+        }
+        else
+        {
+            i--;
         }
     }
 }
@@ -403,31 +417,28 @@ void ataques_humano(int rodada[MEMORIA], string tabuleiro_capa[DIMENSAO][DIMENSA
     }
 }
 
-void sorteio_ataques_computador(int dificuldade, int ataques_computador, int pontos_computador, bool sorteio_verdadeiro, int linha_numerica_computador, int coluna_numerica_computador, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
+void sorteio_ataques_computador(int dificuldade, int ataques_computador, int pontos_computador, int linha_numerica_computador, int coluna_numerica_computador, string tabuleiro_jogador[DIMENSAO][DIMENSAO])
 {
 
     if (dificuldade == 2)
     {
         ataques_computador = 0;
-        while (sorteio_verdadeiro == false || ataques_computador < 2)
+        while (ataques_computador < 2)
         {
             linha_numerica_computador  = rand()%8;
             coluna_numerica_computador = rand()%8;
-            if (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " || tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " )
+            if ((tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " )
+            || (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " ))
             {
-                sorteio_verdadeiro = true;
-                if (sorteio_verdadeiro == true || ataques_computador == 1)
-                {
-                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
-                    ataques_computador++;
-                }
+                tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
                 pontos_computador++;
+                ataques_computador = ataques_computador + 3;
             }
             else
             {
                 tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+                ataques_computador++;
             }
-            ataques_computador++;
         }
     }
     else
@@ -509,11 +520,10 @@ int main()
 
         
         
-        for (int i = 0; i < 3; i++)
+         for(int i = 0; i < 3; i++)
         {
             mostrar_tabuleiro_jogador(linha_jogador, coluna_jogador, tabuleiro_jogador);
             posicionamento_hidroaviao_jogador(aux, linha, aux_conv, tabuleiro_jogador);
-            //variáveis: aux, linha, aux_conv, tabuleiro_jogador.
         }
 
         // Posicionamento do Computador:
@@ -526,13 +536,13 @@ int main()
             //Sistema similar ao de seleção, com switch e if embutido para a confirmação.
             //Sistema bugado  
             ataques_humano(rodada, tabuleiro, tabuleiro_computador, pontos, memo);
-            sorteio_ataques_computador(dificuldade, ataques_computador, pontos_computador, sorteio_verdadeiro, linha_numerica_computador, coluna_numerica_computador, tabuleiro_jogador);
+            sorteio_ataques_computador(dificuldade, ataques_computador, pontos_computador, linha_numerica_computador, coluna_numerica_computador, tabuleiro_jogador);
             rodada[memo]++;
             pontos_def[memo] = pontos[memo];
-        system("cls");
-        cout << "_________________________________________________________________________________"<< endl;
-        cout << "rodada:" << rodada[memo] << endl;
-        cout << "pontos:" << pontos_def[memo] << endl;
+            system("cls");
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << "rodada:" << rodada[memo] << endl;
+            cout << "pontos:" << pontos_def[memo] << endl;
             if (dificuldade == 1)
             {
                 cout << "dificuldade: normal" << endl;
@@ -542,16 +552,7 @@ int main()
                 cout << "dificuldade: dificil" << endl;
             }
         }
-    //Checando acertos do jogador:
-        if (jogador_1 == true)
-        {
-            cout << jogador[memo].nome << " ACERTOU na rodada passada!" << endl;
-        }
-        else
-        {
-            cout << jogador[memo].nome << " ERROU na rodada passada!" << endl;
-        }
-
+        //Vitória ou derrota
         if ((pontos_computador > pontos[memo]) && (pontos_computador >= 15)) 
         {
             mostrarDerrota();
